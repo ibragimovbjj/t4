@@ -20,6 +20,7 @@ func HelloHandler(w http.ResponseWriter, r *http.Request) {
 
 func PostHandler(w http.ResponseWriter, r *http.Request) {
 	var msg Msg
+
 	err := json.NewDecoder(r.Body).Decode(&msg)
 	message = msg.Message
 	fmt.Println(message)
@@ -34,5 +35,6 @@ func main() {
 	// наше приложение будет слушать запросы на localhost:8080/api/hello
 	router.HandleFunc("/api/hello", HelloHandler).Methods("GET")
 	router.HandleFunc("/api/message", PostHandler).Methods("POST")
+	//router.HandleFunc("/api/message", DeleteHandler).Methods("DELETE")
 	http.ListenAndServe(":8080", router)
 }
