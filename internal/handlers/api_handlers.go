@@ -3,16 +3,16 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
-	"t1/t2/internal/messageService"
+	messageService2 "t1/internal/messageService"
 )
 
 type Handler struct {
-	Service *messageService.MessageService
+	Service *messageService2.MessageService
 }
 
 // Нужна для создания структуры Handler на этапе инициализации приложения
 
-func NewHandler(service *messageService.MessageService) *Handler {
+func NewHandler(service *messageService2.MessageService) *Handler {
 	return &Handler{
 		Service: service,
 	}
@@ -28,7 +28,7 @@ func (h *Handler) GetMessagesHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) PostMessageHandler(w http.ResponseWriter, r *http.Request) {
-	var message messageService.Message
+	var message messageService2.Message
 	err := json.NewDecoder(r.Body).Decode(&message)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -46,7 +46,7 @@ func (h *Handler) PostMessageHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) DeleteMessageHandler(w http.ResponseWriter, r *http.Request) {
-	var message messageService.Message
+	var message messageService2.Message
 
 	err := json.NewDecoder(r.Body).Decode(&message)
 	if err != nil {
@@ -62,7 +62,7 @@ func (h *Handler) DeleteMessageHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) UpdateMessageHandler(w http.ResponseWriter, r *http.Request) {
-	var message messageService.Message
+	var message messageService2.Message
 
 	err := json.NewDecoder(r.Body).Decode(&message)
 	if err != nil {

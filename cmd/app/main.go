@@ -3,9 +3,9 @@ package main
 import (
 	"github.com/gorilla/mux"
 	"net/http"
-	"t1/t2/internal/database"
-	"t1/t2/internal/handlers"
-	"t1/t2/internal/messageService"
+	"t1/internal/database"
+	"t1/internal/handlers"
+	"t1/internal/messageService"
 )
 
 func main() {
