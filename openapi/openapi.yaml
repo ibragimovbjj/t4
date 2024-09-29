@@ -1,0 +1,78 @@
+openapi: 3.0.0
+info:
+  title: API
+  version: 1.0.0
+paths:
+  /messages:
+    get:
+      summary: Get all message
+      tags:
+        - message
+      responses:
+        '200':
+          description: A list of message
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Message'
+    post:
+      summary: Create a new message
+      tags:
+        - message
+      requestBody:
+        description: The message to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Message'
+      responses:
+        '201':
+          description: The created message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+    delete:
+      summary: delete a message
+      tags:
+        - message
+      requestBody:
+        description: The message to delete
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Message'
+      responses:
+        '204':
+          description: The message was deleted
+
+    patch:
+      summary: update a message
+      tags:
+        - message
+      requestBody:
+        description: The updated message
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Message'
+      responses:
+        '200':
+          description: The updated message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+
+components:
+  schemas:
+    Message:
+      type: object
+      properties:
+        message:
+          type: string

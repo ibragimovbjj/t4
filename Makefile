@@ -8,6 +8,9 @@ MIGRATE := migrate -path ./migrations -database $(DB_DSN)
 migrate-new:
 	migrate create -ext sql -dir ./migrations ${NAME}
 
+gen:
+	oapi-codegen -config openapi/.openapi -include-tags message -package message openapi/openapi.yaml > ./internal/web/message/api.gen.go
+
 # Применение миграций
 migrate:
 	$(MIGRATE) up
