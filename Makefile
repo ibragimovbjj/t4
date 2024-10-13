@@ -22,3 +22,6 @@ migrate-down:
 # для удобства добавим команду run, которая будет запускать наше приложение
 run:
 	go run cmd/app/main.go # Теперь при вызове make run мы запустим наш сервер
+
+lint:
+	golangci-lint run --out-format=colored-line-number
